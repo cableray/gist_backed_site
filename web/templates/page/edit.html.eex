@@ -1,0 +1,17 @@
+<h1>Edit index</h1>
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>
+  tinymce.init({ 
+    selector:'textarea', 
+    menubar: 'edit insert view format tools',
+    plugins: 'code'
+  });
+</script>
+
+<form method="POST" action="<%= page_path(@conn, :update) %>">
+  <textarea name="content" style="width:100%"><%= raw @content %></textarea>
+  <input type="hidden" name="_method" value="PUT" />
+  <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>" />
+  <button type="submit">Update</button>
+</form>
