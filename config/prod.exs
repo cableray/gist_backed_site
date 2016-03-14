@@ -14,6 +14,7 @@ use Mix.Config
 config :gist_backed_site, GistBackedSite.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: System.get_env("PRIMARY_HOST_NAME"), port: 80],
+  default_gist_id: System.get_env("DEFAULT_GIST_ID"),
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
