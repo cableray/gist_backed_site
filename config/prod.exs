@@ -15,9 +15,14 @@ config :gist_backed_site, GistBackedSite.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: System.get_env("PRIMARY_HOST_NAME"), port: 80],
   default_gist_id: System.get_env("DEFAULT_GIST_ID"),
+  github_api_key: System.get_env("GITHUB_API_KEY"),
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
+config :gist_backed_site, :basic_auth,
+  realm: "Editing",
+  username: System.get_env("BASIC_AUTH_USER"),
+  password: System.get_env("BASIC_AUTH_PASS")
 # Do not print debug messages in production
 config :logger, level: :info
 

@@ -20,6 +20,15 @@ defmodule GistBackedSite.GitHub do
     # |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
   end
 
+  def process_request_body(body) do
+    body |>
+    Poison.encode!
+  end
+
+  def process_request_headers(headers) do
+    [{"Authorization", "token " <> GistBackedSite.Endpoint.config(:github_api_key)}] ++ headers
+  end
+
   def get_gist!(id) do
     get!("/gists/" <> id)
   end
@@ -32,5 +41,13 @@ defmodule GistBackedSite.GitHub do
   def get_file_content(%HTTPoison.Response{body: %{"files" => files}}, file_name) do
     %{^file_name => %{"content" => content}} = files
     content
+  end
+
+  def update_gist!(id, payload) do
+    patch!("/gists/" <> id, payload)
+  end
+
+  def update_gist_file!(id, file_name, content) do
+    update_gist!(id, %{"files" => %{file_name => %{"content" => content}}})
   end
 end
