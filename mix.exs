@@ -37,8 +37,7 @@ defmodule GistBackedSite.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:httpoison, "~> 0.8.0"},
-     {:basic_auth, "~> 1.0.0"}]
+     {:httpoison, "~> 0.8.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
