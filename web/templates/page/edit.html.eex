@@ -5,7 +5,7 @@
   tinymce.init({ 
     selector:'textarea', 
     menubar: 'edit insert view format tools',
-    plugins: 'code'
+    plugins: 'code link image imagetools'
   });
 </script>
 
